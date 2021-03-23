@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.notification.springboot.sending.app.model.SendEmail;
+import com.notification.springboot.sending.app.model.SendSms;
 import com.notification.springboot.sending.app.service.EmailSenderService;
 import com.notification.springboot.sending.app.service.SmsSenderService;
 
@@ -37,16 +38,16 @@ public class Receiver {
 
 	}
 
-	/*
-	@RabbitListener(autoStartup = "true", bindings = @QueueBinding(value = @Queue(name = "sms"), exchange = @Exchange(name = "notification", type = ExchangeTypes.FANOUT)))
+	
+	@RabbitListener(autoStartup = "true", bindings = @QueueBinding(value = @Queue(name = "sms"), exchange = @Exchange(name = "notification2", type = ExchangeTypes.FANOUT)))
 	@RabbitHandler
 	public void onSMS(String message) throws Exception {
 		System.out.println("Consuming Message - " + message);
 		ObjectMapper objectMapper = new ObjectMapper();
-		SendEmail sendEmail = objectMapper.readValue(message, SendEmail.class);
-		smsService.sendSms(sendEmail);
-		System.out.println("String instance " + sendEmail.toString() + " [x] Received");
+		SendSms sendSms = objectMapper.readValue(message, SendSms.class);
+		smsService.sendSms(sendSms);
+		System.out.println("String instance " + sendSms.toString() + " [x] Received");
 
 	}
-*/
+
 }
