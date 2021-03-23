@@ -32,7 +32,7 @@ public class SmsSenderService {
 
 		Map<String, Object> map = sms.getMap();
 
-		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+		Twilio.init(ACCOUNT_SID, "3ef034686da358d0"+AUTH_TOKEN);
 		Message messageT = Message
 				.creator(new PhoneNumber(sms.getPara()), new PhoneNumber(TWILIO_NUMBER),
 						"Bienvenid@ " + map.get("name") + " a Yo Consumo, "+ map.get("message"))
